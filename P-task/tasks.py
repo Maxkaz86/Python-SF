@@ -224,20 +224,302 @@ import numpy
 # N = [a * b for a, b in zip(L, M)]
 # print(N)
 
-text = input()  # получаем строку
+# text = input()  # получаем строку
+#
+# first = text[0]  # сохраняем первый символ
+# count = 0  # заводим счетчик
+# result = ''  # и результирующую строку
+#
+# for c in text:
+#     if c == first:  # если символ совпадает с сохраненным,
+#         count += 1  # то увеличиваем счетчик
+#     else:
+#         result += first + str(count)  # иначе - записываем в результат
+#         first = c  # и обновляем сохраненный символ с его счетчиком
+#         count = 1
+#
+# result += first + str(count)  # и добавляем в результат последний символ
+# print(result)
+# letter = input('write word')
+# L = ['a','e','i','u','o']
+# if letter in L:
+#     print('гласная')
+# elif letter == 'y':
+#     print('согласная и гласная')
+# else:
+#     print('согласная')
+# a = ['отбивная','пельмени','рис','рыба']
+# for i in a:
+#     if i == 'пельмени':
+#         print('я не ем перльмени')
+#         continue
+#     print('очень вкусная ' + i)
+# else:
+#     print('ненавижу пельмени')
+# print('ужин окончен')
+# def hello_world():
+#     print('Hello World')
+# hello_world()
+# def char_frequency(text):
+#    text = text.lower()
+#    text = text.replace(" ", "")
+#    text = text.replace("\n", "")
+#
+#    count = {}  # для подсчета символов и их количества
+#    for char in text:
+#        if char in count:  # если символ уже встречался, то увеличиваем его количество на 1
+#            count[char] += 1
+#        else:
+#            count[char] = 1
+#    print(count)
+#    for char, cnt in count.items():
+#        print(f"Символ {char} встречается {cnt} раз")
+# char_frequency()
+# def divider(a, n):
+#     if a % n == 0:
+#         print(f'Число {n} является делителем числа {a}')
+#     else:
+#         print(f'число {n} не является делителем числа {a}')
+# divider(10, 3)
+# def stairs(n):
+#     for i in range(n, 0, -1):
+#         print('*' * i)
+# stairs(3)
+# def divider(a):
+#     count = 0
+#     for n in range(1, a + 1):
+#         if a % n == 0:
+#             count += 1
+#     return count
+# print(divider(5))
+# def polydron(text):
+#     text = text.lower()
+#     text = text.replace(' ', '')
+#     if text == text[::-1]:
+#         return True
+#     else:
+#         return False
+# print(polydron("Тест"))
 
-first = text[0]  # сохраняем первый символ
-count = 0  # заводим счетчик
-result = ''  # и результирующую строку
+#
+# def get_mul_func(m):
+#     nonlocal_m = m
+#
+#     def local_mul(n):
+#         return n * nonlocal_m
+#
+#     return local_mul
+#
+#
+# two_mul = get_mul_func(2)  # возвращаем функцию, которая будет умножать числа на 2
+# print(two_mul(5))
 
-for c in text:
-    if c == first:  # если символ совпадает с сохраненным,
-        count += 1  # то увеличиваем счетчик
-    else:
-        result += first + str(count)  # иначе - записываем в результат
-        first = c  # и обновляем сохраненный символ с его счетчиком
-        count = 1
+# def rec_fibb(n):
+#    if n == 1:
+#        return 0
+#    if n == 2:
+#       return 1
+#    return rec_fibb(n - 1) + rec_fibb(n - 2)
+#
+# print(rec_fibb(5))
+# def fact(n):
+#     if n == 1:
+#         return 1
+#     return n + fact(n - 1)
+# print(fact(3))
+# def strings(n):
+#     if len(n) == 0:
+#         return ''
+#     else:
+#         return n[-1] + strings(n[:-1])
+# print(strings('test'))
+# def sum_digit(n):
+#    if n < 10:
+#        return n
+#    else:
+#        return n % 10 + sum_digit(n // 10)
+#
+# print(sum_digit(1234))
+# def sum(a=1, b=1):
+#     while True:
+#         a += b
+#         yield a
+# print(sum(5,6))
+# def lists(list_):
+#     list_val = list_.copy()
+#     while True:
+#         value = list_val.pop(0)
+#         list_val.append(value)
+#         yield value
+# for i in lists([1,2,3]):
+#     print(i)
+# import time
+# N = 100
+# def decorator_time(fn):
+#    def wrapper():
+#        print(f"Запустилась функция {fn}")
+#        t0 = time.time()
+#        result = fn()
+#        dt = time.time() - t0
+#        print(f"Функция выполнилась. Время: {dt:.10f}")
+#        return dt  # задекорированная функция будет возвращать время работы
+#    return wrapper
+# def pow_2():
+#    return 10000000000 ** 2
+#
+# def in_build_pow():
+#    return pow(10000000000, 2)
+#
+# pow_2 = decorator_time(pow_2)
+# in_build_pow = decorator_time(in_build_pow)
+# mean_pow_2 = 0
+# mean_in_build_pow = 0
+# for i in range(N):
+#     mean_pow_2 += pow_2()
+#     mean_in_build_pow += in_build_pow()
+# print(f'Function {pow_2} performed {N} times. Average time: {mean_pow_2/N:.10f}')
+# print(f'Function {in_build_pow} performed {N} times. Average time: {mean_in_build_pow/N:.10f}')
+# def my_decorator(x):
+#     count = 0
+#     def wrapper(*args, **kwargs):
+#         nonlocal count
+#         x(*args, **kwargs)
+#         count += 1
+#         print(f'Function {x} was called {count} times')
+#     return wrapper
+#
+# @my_decorator
+# def say_hello(word):
+#     print(word)
+# say_hello('Hi hi hi')
+# say_hello('Something new')
+# say_hello("I'm stupido")
 
-result += first + str(count)  # и добавляем в результат последний символ
-print(result)
+# def cache(func):
+#    cache_dict = {}
+#    def wrapper(num):
+#        nonlocal cache_dict
+#        if num not in cache_dict:
+#            cache_dict[num] = func(num)
+#            print(f"Добавление результата в кэш: {cache_dict[num]}")
+#        else:
+#            print(f"Возвращение результата из кэша: {cache_dict[num]}")
+#        print(f"Кэш {cache_dict}")
+#        return cache_dict[num]
+#    return wrapper
+# @cache
+# def f(n):
+#     return n * 123456789
+# f(11)
+# def linier_solver(a,b):
+#     if a:
+#         return b/a
+#     elif not a and not b:
+#         return "Бесконечное количество корней"
+#     else:
+#         return "нет корней"
+# print(linier_solver(0,0))
+# def D(a,b,c):
+#     return b**2 - 4*a*c
+#
+# def quadratic_solve(a,b,c):
+#     if D(a,b,c) < 0:
+#         return 'Нет вещественных корней'
+#     elif D(a,b,c) == 0:
+#         return -b/(2*a)
+#     else:
+#         return (-b - D(a, b, c) ** 0.5) / (2 * a), (-b + D(a, b, c) ** 0.5) / (2 * a)
+# # D(1,3,1)
+# print(quadratic_solve(1,3,1))
+# task 14.5.9
+# L=list(map(int,input('write numbers ').split()))
+# def min_list(L):
+#     if len(L) == 1:
+#         return L[0]
+#     return L[0] if L[0] < min_list(L[1:]) else min_list(L[1:])
+# print(min_list(L))
+# task 14.5.10
+# def mirror(a, res=0):
+#     if a == 0:
+#         return res
+#     else:
+#         return mirror(a // 10, res * 10 + a % 10)
+# def equal(N, S):
+#     if S < 0:
+#         return False
+#     if N < 10:
+#         return N == S
+#     else:
+#         return equal(N // 10, S - N % 10)
+# print(equal(23, 5))
+# def e():
+#     n = 1
+#
+#     while True:
+#         yield (1 + 1 / n) ** n
+#         n += 1
+# last = 0
+# for a in e(): # e() - генератор
+#     if (a - last) < 0.00000001: # ограничение на точность
+#         print(a)
+#         break # после достижения которого - завершаем цикл
+#     else:
+#         last = a # иначе - присваиваем новое значение
+# e()
+# e()
+# print(a)
 
+# USERS = ['admin', 'guest', 'director', 'root', 'superstar']
+#
+# yesno = input("""Введите Y, если хотите авторизоваться или N,
+#              если хотите продолжить работу как анонимный пользователь: """)
+#
+# auth = yesno == "Y"
+# def is_auth(func):
+#     def wrapper():
+#         if auth:
+#             print("Пользователь авторизован")
+#             func()
+#         else:
+#             print("Пользователь неавторизован. Функция выполнена не будет")
+#     return wrapper
+#
+#
+# if auth:
+#     username = input("Введите ваш username:")
+# def has_access(func):
+#     def wrapper():
+#         if username in USERS:
+#             print("Авторизован как", username)
+#             func()
+#         else:
+#             print("Доступ пользователю", username, "запрещен")
+#     return wrapper
+#
+# @is_auth
+# @has_access
+# def from_db():
+#     print("some data from database")
+#
+# from_db()
+# L = ['THIS', 'IS', 'LOWER', 'STRING']
+# print(list(map(str.lower, L)))
+# lists = [-2, -1, 0, 1, -3, 2, -3]
+# def numbers(x):
+#     return x % 2 == 0
+# results = list(filter(numbers, lists))
+# print(results)
+# data = [
+#    (82, 191),
+#    (68, 174),
+#    (90, 189),
+#    (73, 179),
+#    (76, 184)
+# ]
+# d = min(data, key = lambda i: i[0]/i[1]**2)
+# print(d)
+# a = ["asd", "bbd", "ddfa", "mcsa"]
+
+# print(list(map(lambda i: i.upper(), a)))
+# print(list(map(str.upper, a)))
+from datetime import datetime
