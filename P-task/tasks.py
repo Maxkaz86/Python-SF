@@ -523,3 +523,168 @@ import numpy
 # print(list(map(lambda i: i.upper(), a)))
 # print(list(map(str.upper, a)))
 from datetime import datetime
+
+# 15.1.2
+# mySong = open('myfavouritesong.txt', 'rt', encoding='utf8')
+# for line in mySong:
+#     print(line)
+# myFile = open('testfile.txt', 'w')
+# myFile.write('hello')
+# print('world', file = myFile)
+# myFile = open('testfile.txt', 'r')
+# print(myFile.read())
+
+# alpha = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
+# alphaUp = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
+# number = int(input('Введите число, на которое нужно сдвинуть текст: '))
+#
+# summary = ''
+#
+#
+# def changeChar(char):
+#     if char in alpha:
+#         return alpha[(alpha.index(char) + number) % len(alpha)]
+#     elif char in alphaUp:
+#         return alphaUp[(alphaUp.index(char) + number) % len(alphaUp)]
+#     else:
+#         return char
+#
+#
+# with open("myfavouritesong.txt", encoding="utf8") as myFile:
+#     for line in myFile:
+#         for char in line:
+#             summary += changeChar(char)
+#
+# with open("output.txt", 'w', encoding="utf8") as myFile:
+#     myFile.write(summary)
+
+# nameFile = input('Название файла: ')
+# with open(nameFile, encoding='utf8') as f:
+#     myFile = f.read()
+#
+# def changeText(text):
+#     """
+#     Функция принимает строку с текстом.
+#     Убирает все знаки препинания и возвращает
+#     список, состоящий из слов текста.
+#     """
+#     for i in '!"\'#$%&()*+-,/:;<=>?@[\\]^_{|}~':
+#         text = text.replace(i, '')
+#     return text.split()
+# def mostCommon(text, length=0):
+#     """
+#     Функция принимает список и ограничение по длине.
+#     Возвращает самый часто встречающийся элемент.
+#     Если есть несколько элементов с одинаковой самой большой частотой, то вернёт их все.
+#     """
+#     most_common = []
+#     qty_most_common = 0
+#     for item in text:
+#         if len(item) > length:
+#             qty = text.count(item)
+#             if qty > qty_most_common:
+#                 qty_most_common = qty
+#                 most_common = [item]
+#             elif qty == qty_most_common:
+#                 most_common.append(item)
+#     return list(set(most_common))
+#
+# def mostLength(text):
+#     """
+#     Функция принимает список.
+#     Возвращает самый длинный элемент.
+#     Если есть несколько элементов с одинаковой самой большой длиной, то вернёт их все.
+#     """
+#     most_length = []
+#     qty_most_length = 0
+#     alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+#     for item in text:
+#         for char in item:
+#             if char not in alphabet:
+#                 charEn = False
+#             else:
+#                 charEn = True
+#         if charEn:
+#             qty = len(item)
+#             if qty > qty_most_length:
+#                 qty_most_length = qty
+#                 most_length = [item]
+#             elif qty == qty_most_length:
+#                 most_length.append(item)
+#     return list(set(most_length))
+#
+# fileText = changeText(myFile)
+# print(f'Список самых частых слов длинной более трёх символов: {mostCommon(fileText, 3)}')
+# print(f'Список самых длинных английских слов: {mostLength(fileText)}')
+
+# import json
+# with open('file.txt', encoding='utf8') as f:
+#     templates = json.load(f)
+#     print(templates)
+# def checkInt(item):
+#     return isinstance(item, int)
+# def checkStr(item):
+#     return isinstance(item, str)
+# def checkBool(item):
+#     return isinstance(item, bool)
+# def checkUrl(item):
+#     if isinstance(item, str):
+#         return item.startswith('http://') or item.startswith('https://')
+#     else:
+#         return False
+# def checkStrValue(item, val):
+#     if isinstance(item, str):
+#         return item in val
+#     else:
+#         return False
+# def errorLog(item, value, string):
+#     error.append({item: f'{value}, {string}'})
+#
+# listOfItems = {
+#     'timestamp': 'int',
+#     'referer': 'url',
+#     'location': 'url',
+#     'remoteHost': 'str',
+#     'partyId': 'str',
+#     'sessionId': 'str',
+#     'pageViewId': 'str',
+#     'eventType': 'val',
+#     'item_id': 'str',
+#     'item_price': 'int',
+#     'item_url': 'url',
+#     'basket_price': 'str',
+#     'detectedDuplicate': 'bool',
+#     'detectedCorruption': 'bool',
+#     'firstInSession': 'bool',
+#     'userAgentName': 'str',
+# }
+# error = []
+# for items in templates:
+#     for item in items:
+#         if item in listOfItems:
+#             if listOfItems[item] == 'int':
+#                 if not checkInt(items[item]):
+#                     errorLog(item, items[item], f'Ожидали тип {listOfItems[item]}')
+#             elif listOfItems[item] == 'str':
+#                 if not checkStr(items[item]):
+#                     errorLog(item, items[item], f'Ожидали тип {listOfItems[item]}')
+#             elif listOfItems[item] == 'bool':
+#                 if not checkBool(items[item]):
+#                     errorLog(item, items[item], f'Ожидали тип {listOfItems[item]}')
+#             elif listOfItems[item] == 'url':
+#                 if not checkUrl(items[item]):
+#                     errorLog(item, items[item], f'Ожидали тип {listOfItems[item]}')
+#             elif listOfItems[item] == 'val':
+#                 if not checkStrValue(items[item], ['itemBuyEvent', 'itemViewEvent']):
+#                     errorLog(item, items[item], 'Ожидали значения itemBuyEvent или itemViewEvent')
+#             else:
+#                 errorLog(item, items[item], 'неожиданное значение')
+#         else:
+#             errorLog(item, items[item], 'неизвестная переменная')
+#
+# if error == []:
+#     print('Pass')
+# else:
+#     print('Fail')
+#     print(error)
+
