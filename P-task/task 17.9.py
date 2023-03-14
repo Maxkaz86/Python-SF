@@ -1,3 +1,4 @@
+# создаем форму для ввода данных и последующей проверке корректности данных
 try:
     lists_ = list(map(int, (input('укажите числа через пробел: ').split())))
     num = int(input('Укажите произвольное целое число: '))
@@ -11,6 +12,7 @@ except ValueError:
     print('Повторите ввод данных')
     raise StopIteration
 
+#  добавляем код для сортировки массива
 def merge_sort(L):
     if len(L) < 2:
         return L[:]
@@ -42,7 +44,7 @@ def merge(left, right):
 
     return result
 
-
+# добавляем поиск нужного индекса
 def binary_search(L, element, left, right):
     if left > right:
         return False
