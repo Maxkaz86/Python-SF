@@ -21,28 +21,36 @@
 #
 # print('Площадь фигуры равна', figure.getArea())
 
-class Customers:
-    def __init__(self, name, surname, city, balance):
-        self.name = name
-        self.surname = surname
-        self.city = city
-        self.balance = balance
+# class Customers:
+#     def __init__(self, name, surname, city, balance):
+#         self.name = name
+#         self.surname = surname
+#         self.city = city
+#         self.balance = balance
+#
+#     def __str__(self):
+#         a = str(self.name).capitalize()
+#         return f'{a} {self.surname}. Город {self.city}. Баланс: {self.balance} руб.'
+#
+#     def get_guest(self):
+#         return f'{self.name} {self.surname}. Город {self.city}.'
+#
+#
+# # customer_1 = Customers('ИВан', 'Петров', 'Москва', 100)
+# # print(customer_1)
+#
+# customer_1 = Customers('Иван', 'Петров', 'Москва', 200)
+# customer_2 = Customers('Максим', 'Казанцев', 'Воронеж', 500)
+#
+# guests = [customer_1, customer_2]
+#
+# for i in guests:
+#     print(i.get_guest())
 
-    def __str__(self):
-        a = str(self.name).capitalize()
-        return f'{a} {self.surname}. Город {self.city}. Баланс: {self.balance} руб.'
-
-    def get_guest(self):
-        return f'{self.name} {self.surname}. Город {self.city}.'
-
-
-# customer_1 = Customers('ИВан', 'Петров', 'Москва', 100)
-# print(customer_1)
-
-customer_1 = Customers('Иван', 'Петров', 'Москва', 200)
-customer_2 = Customers('Максим', 'Казанцев', 'Воронеж', 500)
-
-guests = [customer_1, customer_2]
-
-for i in guests:
-    print(i.get_guest())
+# class NonPositiveDigitException(ValueError):
+#     pass
+#
+# class Square:
+#     def __init__(self, a):
+#         if a <= 0:
+#             raise NonPositiveDigitException('Неправильно указана сторона квадрата')

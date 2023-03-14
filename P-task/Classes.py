@@ -84,3 +84,29 @@
 #     def getArea(self):
 #         return self.width * self.height
 
+# sides это список, в нем находятся размеры сторон
+class Polygon:
+    def __init__(self, no_of_sides):
+        self.n = no_of_sides
+        # self.sides = [0 for i in range(no_of_sides)] - это лишний код
+    # теперь создадим метод для приема размера для каждой из сторон
+    def inputSides(self):
+        self.sides = [float(input('введите сторону ' + str(i+1) + ': ')) for i in range(self.n)]
+    # теперь выводим на экран стороны
+    def dispSides(self):
+        for i in range(self.n):
+            print('сторона', i+1, '-', self.sides[i])
+
+class Triangle(Polygon):
+    def __init__(self):
+        super().__init__(3)
+    def findArea(self):
+        a, b, c = self.sides
+        s = (a + b + c)/2
+        area = (s*(s-a)*(s-b)*(s-c)**0.5)
+        print('площадь треугольника', area)
+
+t = Triangle()
+t.inputSides()
+t.dispSides()
+t.findArea()
