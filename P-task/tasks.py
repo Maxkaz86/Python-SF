@@ -1095,7 +1095,7 @@ from datetime import datetime
 #
 # print(array)
 
-array = [2, 3, 1, 4, 6, 5, 9, 8, 7]
+# array = [2, 3, 1, 4, 6, 5, 9, 8, 7]
 # count =0
 # for i in range(1, len(array)):
 #     x = array[i] #6
@@ -1110,22 +1110,131 @@ array = [2, 3, 1, 4, 6, 5, 9, 8, 7]
 
 #сортировка быстрая
 
-def qsort(array, left, right):
-    middle = (left + right) // 2
+# def qsort(array, left, right):
+#     middle = (left + right) // 2
+#
+#     p = array[middle]
+#     i, j = left, right
+#     while i <= j:
+#         while array[i] < p:
+#             i += 1
+#         while array[j] > p:
+#             j -= 1
+#         if i <= j:
+#             array[i], array[j] = array[j], array[i]
+#             i += 1
+#             j -= 1
+#
+#     if j > left:
+#         qsort(array, left, j)
+#     if right > i:
+#         qsort(array, i, right)
 
-    p = array[middle]
-    i, j = left, right
-    while i <= j:
-        while array[i] < p:
-            i += 1
-        while array[j] > p:
-            j -= 1
-        if i <= j:
-            array[i], array[j] = array[j], array[i]
-            i += 1
-            j -= 1
+# функция как тип
+# def say_hello():
+#     print('Hello')
+#
+# def say_goodbye():
+#     print('good bye')
+#
+# # присвоили переменной значение функции
+# message = say_hello
+# message()
 
-    if j > left:
-        qsort(array, left, j)
-    if right > i:
-        qsort(array, i, right)
+# def sum(a,b):
+#     return a + b
+#
+# def mult(a,b):
+#     return a*b
+#
+# operation = sum
+# result = operation(5,6)
+# print(result)
+#
+# operation = mult
+# print(operation(5,6))
+
+# рекурсия - функция вызывает саму себя. у рекурсии должен быть выход
+# def rec(x):
+#     if x < 4:
+#         print(x)
+#         rec(x + 1)
+#         print(x)
+#
+# rec(1) # глобальная область видимости
+
+# факториал числа
+# 7! = 7*6*5*4*3*2*1 =
+# def factorial(x):
+#     if x == 1:
+#         return 1
+#     return factorial(x-1)*x
+# print(factorial(3))
+
+
+# пример использования рекурсии для определения четности числа
+# x = int(input('write num '))
+# def check(x):
+#     if x < 2:
+#         return (x % 2 == 0)
+#     return check(x-2)
+# if check(x) == True:
+#     print('число четное')
+# else:
+#     print('нечетное')
+
+# итераторы и генераторы
+# генератор списка
+# a = [x+x for x in range(1,6)]
+# print(a)
+
+# выражения генераторы
+# a = (i for i in range(1,6))
+# print(next(a))
+# print(next(a))
+
+# итератор - это объект, который поддерживает функцию next()
+# и помнит какой элемент будет браться следующий
+# функция iter преобразует объект в итерируемый
+# s = [1,2,3]
+# d = iter(s)
+# print(next(d))
+# print(next(d))
+
+# yield вместо return
+# def cube_num(nums):
+#     cube_list = []
+#     for i in nums:
+#         cube_list.append(i**3)
+#     return cube_list
+#
+# print(cube_num([1,2,3,4,5]))
+#
+# def cube_numbers(n):
+#     for i in n:
+#         yield (i**3)
+#
+# a = cube_numbers([1,2,3,4,5])
+# print(next(a))
+# print(next(a))
+# print(next(a))
+
+# декоратор - обертка для функции
+
+def my_decor(func):
+    def wrapper(x):
+        print('start')
+        func(x)
+        print('end')
+    return wrapper # используется не как функция, а как значение
+@my_decor # альтернативная запись декоратора
+def my_func(n):
+    print(n**2)
+my_func(5)
+
+# my = my_decor(my_func)
+# my()
+
+
+
+
