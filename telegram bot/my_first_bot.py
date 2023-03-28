@@ -1,6 +1,6 @@
 import telebot
 from config import keys, TOKEN
-from utils import APIException, ExchangeConverter
+from exstansions import APIexception, Exchangeconverter
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -8,7 +8,7 @@ bot = telebot.TeleBot(TOKEN)
 def send_request(message):
     text = 'Привет! Чтобы узнать курс интересующей Вас валюты введите запрос в формате:\n ' \
            '<имя валюты для конвертации>' \
-           '<в какую валюту конвертировать>' \
+           ' <в какую валюту конвертировать>' \
            ' <количество>\n' \
            'Увидеть список всех доступных валют: /values'
     bot.send_message(message.chat.id, text)
@@ -25,18 +25,18 @@ def convert(message):
     try:
         value = message.text.split(' ')
         if len(value) != 3:
-            raise APIException('Указано слишком много параметров')
+            raise APIexception('Указано слишком много параметров')
 
-        quote, base, amount = value
-        quote_ticker = keys[quote]
+        base, quote, amount = value
         base_ticker = keys[base]
-        total_base = ExchangeConverter.convert_check(quote, base, amount)
-    except APIException as e:
+        quote_ticker = keys[quote]
+        total_base = Exchangeconverter.get_price(base, quote, amount)
+    except APIexception as e:
         bot.reply_to(message, f'Ошибка пользователя\n{e}')
     except Exception as e:
         bot.reply_to(message, f'Не удалось обработать команду\n{e}')
     else:
-        text = f'Цена {amount} {quote_ticker} в {base_ticker} - {total_base}'
+        text = f'Цена {amount} {base_ticker} в {quote_ticker} - {int(total_base) * int(amount)}'
         bot.send_message(message.chat.id, text)
 
 bot.polling()
