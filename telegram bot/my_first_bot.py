@@ -36,7 +36,7 @@ def convert(message):
     except Exception as e:
         bot.reply_to(message, f'Не удалось обработать команду\n{e}')
     else:
-        text = f'Цена {amount} {base_ticker} в {quote_ticker} - {int(total_base) * int(amount)}'
+        text = f'Цена {amount} {base_ticker} в {quote_ticker} - {total_base}'
         bot.send_message(message.chat.id, text)
 
 bot.polling()
