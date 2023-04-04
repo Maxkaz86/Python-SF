@@ -32,16 +32,52 @@ user_update = {
       "userStatus": 0
 }
 
-res = requests.get(f'https://petstore.swagger.io/v2/pet/findByStatus', headers=headers, params=params)
-res1 = requests.post(f'https://petstore.swagger.io/v2/user', headers=headers, data=json.dumps(data))
-res2 = requests.put(f'https://petstore.swagger.io/v2/user/{user}', data=json.dumps(user_update), headers=headers)
-res3 = requests.delete(f'https://petstore.swagger.io/v2/user/{user}', headers=headers)
 
-print(res.status_code)
-print(res.json())
-print(res1.status_code)
-print(res1.json())
-print(res2.status_code)
-print(res2.json())
-print(res3.status_code)
-print(res3.json())
+def get_pets_by_status():
+    res = requests.get(f'https://petstore.swagger.io/v2/pet/findByStatus', headers=headers, params=params)
+    status = res.status_code
+    result = ''
+    try:
+        result = res.json()
+    except:
+        result = res.text
+    return status, result
+
+
+def add_new_pet():
+    res = requests.post(f'https://petstore.swagger.io/v2/user', headers=headers, data=json.dumps(data))
+    status = res.status_code
+    result = ''
+    try:
+        result = res.json()
+    except:
+        result = res.text
+    return status, result
+
+
+def update_pet():
+    res = requests.put(f'https://petstore.swagger.io/v2/user/{user}', data=json.dumps(user_update), headers=headers)
+    status = res.status_code
+    result = ''
+    try:
+        result = res.json()
+    except:
+        result = res.text
+    return status, result
+
+
+def delete_pet():
+    res = requests.delete(f'https://petstore.swagger.io/v2/user/{user}', headers=headers)
+    status = res.status_code
+    result = ''
+    try:
+        result = res.json()
+    except:
+        result = res.text
+    return status, result
+
+
+print(get_pets_by_status())
+print(add_new_pet())
+print(update_pet())
+print(delete_pet())
