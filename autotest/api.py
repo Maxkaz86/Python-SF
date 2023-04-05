@@ -42,7 +42,7 @@ class PetFriends:
             result = res.text
         return status, result
 
-    def add_new_pet(self, auth_key: json, name: str, animal_type: str, age: int, pet_photo: str) -> json:
+    def add_new_pet(self, auth_key: json, name: str, animal_type: str, age: str, pet_photo: str) -> json:
         """Метод отправляет (постит) на сервер данные о добавляемом питомце и возвращает статус
                 запроса на сервер и результат в формате JSON с данными добавленного питомца"""
         data = {
@@ -64,7 +64,7 @@ class PetFriends:
             result = res.text
         return status, result
 
-    def update_pet_info(self, auth_key: json, pet_id: str, name: str, animal_type: str, age: int) -> json:
+    def update_pet_info(self, auth_key: json, pet_id: str, name: str, animal_type: str, age: str) -> json:
         """Метод отправляет запрос на сервер о обновлении данных питомуа по указанному ID и
                возвращает статус запроса и result в формате JSON с обновлённыи данными питомца"""
 
@@ -100,7 +100,7 @@ class PetFriends:
             result = res.text
         return status, result
 
-    def add_new_pet_no_photo(self, auth_key: json, name: str, animal_type: str, age: int) -> json:
+    def add_new_pet_no_photo(self, auth_key: json, name: str, animal_type: str, age: str) -> json:
         """Метод отправляет запрос на добавление питомца и возвращает статус запроса
          и результут в формате JSON"""
 
