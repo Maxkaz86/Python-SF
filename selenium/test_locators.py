@@ -74,7 +74,7 @@ class TestLocators:
                 assert len(parts[2]) > 0
 
     def test_check_name(self):
-        # проверяем, все ли имена уникальны
+        # проверяем, все ли имена питомцев уникальны
         driver.find_element(By.CSS_SELECTOR, 'a[href="/my_pets"]').click()
         driver.implicitly_wait(5)
         names = driver.find_elements(By.CSS_SELECTOR, 'div#all_my_pets table tbody tr')
@@ -88,6 +88,7 @@ class TestLocators:
 
 
     def test_check_all_animals(self):
+        # проверяем, все ли карточки питомцев уникальны
         driver.find_element(By.CSS_SELECTOR, 'a[href="/my_pets"]').click()
         driver.implicitly_wait(5)
         descriptions = driver.find_elements(By.CSS_SELECTOR, 'div#all_my_pets table tbody tr')
