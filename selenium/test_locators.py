@@ -66,10 +66,4 @@ class TestLocators:
             assert len(parts[1]) > 0
             assert len(parts[2]) > 0
 
-    # def test_check_name(self):
-    #     names = driver.find_elements(By.CSS_SELECTOR, 'div#all_my_pets > table > tbody > tr > td')
-    #     pet_names = []
-    #     for i in range(len(names)):
-    #         parts = names[i].text.split(' ')
-    #         pet_names.append(parts[0])
-    #     for x in range(len(pet_names)):
+
