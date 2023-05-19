@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 driver = webdriver.Chrome()
 
 
-@pytest.fixture(scope='class', autouse=True)
+@pytest.fixture(scope='function', autouse=True)
 def run_mark():
     # Переходим на страницу авторизации
     driver.get('http://petfriends.skillfactory.ru/login')
@@ -22,12 +22,5 @@ def run_mark():
     driver.quit()
 
 
-def check_animal_data():
-    names = driver.find_elements(By.CSS_SELECTOR, 'div#all_my_pets > table > tbody > tr > td')
-    # a = []
-    # for i in range(len(names)):
-    #     parts = names[i].text.split(' ')
-    #     a.append(parts[0])
-    return names
 
-print(check_animal_data())
+

@@ -42,29 +42,61 @@ class TestLocators:
 
     def test_my_pets(self):
         driver.find_element(By.CSS_SELECTOR, 'a[href="/my_pets"]').click()
-        driver.implicitly_wait(10)
+        wait = WebDriverWait(driver, 5)
+        wait.until(EC.visibility_of_element_located((By.XPATH, '//div[@id="all_my_pets"]')))
         cards = driver.find_elements(By.CSS_SELECTOR, 'tbody>tr')
-        assert len(cards) == 8
+        statistics = driver.find_element(By.CSS_SELECTOR, 'div.task3 div')
+        amount = statistics.text.split(': ')
+        assert len(cards) == int(amount[1][0])
 
     def test_images_numbers(self):
         driver.find_element(By.CSS_SELECTOR, 'a[href="/my_pets"]').click()
         wait = WebDriverWait(driver, 5)
         wait.until(EC.visibility_of_element_located((By.XPATH, '//div[@class=".col-sm-4 left"]/h2')))
         images = driver.find_elements(By.CSS_SELECTOR, 'img')
+        statistics = driver.find_element(By.CSS_SELECTOR, 'div.task3 div')
+        amount = statistics.text.split(': ')
         count = 0
         for i in range(len(images)):
             if images[i].get_attribute('src') != '':
                 count += 1
-        assert count > 4
+        assert count > (int(amount[1][0]) // 2)
 
     def test_check_animal_data(self):
         driver.find_element(By.CSS_SELECTOR, 'a[href="/my_pets"]').click()
-        driver.implicitly_wait(10)
-        names = driver.find_elements(By.CSS_SELECTOR, 'div#all_my_pets > table > tbody > tr > td')
+        driver.implicitly_wait(5)
+        descriptions = driver.find_elements(By.CSS_SELECTOR, 'div#all_my_pets table tbody tr')
+        for i in range(len(descriptions)):
+            parts = descriptions[i].text.split(' ')
+            if len(parts) >= 3:
+                assert len(parts[0]) > 0
+                assert len(parts[1]) > 0
+                assert len(parts[2]) > 0
+
+    def test_check_name(self):
+        # проверяем, все ли имена уникальны
+        driver.find_element(By.CSS_SELECTOR, 'a[href="/my_pets"]').click()
+        driver.implicitly_wait(5)
+        names = driver.find_elements(By.CSS_SELECTOR, 'div#all_my_pets table tbody tr')
+        pet_name = []
         for i in range(len(names)):
             parts = names[i].text.split(' ')
-            assert len(parts[0]) > 0
-            assert len(parts[1]) > 0
-            assert len(parts[2]) > 0
+            pet_name.append(parts[0])
+        for i in range(len(pet_name) - 1):
+            for j in range(i+1, len(pet_name)):
+                assert pet_name[i] != pet_name[j]
 
+
+    def test_check_all_animals(self):
+        driver.find_element(By.CSS_SELECTOR, 'a[href="/my_pets"]').click()
+        driver.implicitly_wait(5)
+        descriptions = driver.find_elements(By.CSS_SELECTOR, 'div#all_my_pets table tbody tr')
+        animal_data = []
+        for i in range(len(descriptions)):
+            animal_data.append(descriptions[i].text.split(' '))
+        for i in range(len(animal_data)-1):
+            for j in range(i+1, len(animal_data)):
+                assert animal_data[i][0] != animal_data[j][0]
+                assert animal_data[i][1] != animal_data[j][1]
+                assert animal_data[i][2] != animal_data[j][2]
 
