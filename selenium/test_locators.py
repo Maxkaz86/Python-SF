@@ -47,8 +47,9 @@ class TestLocators:
         assert len(cards) == 8
 
     def test_images_numbers(self):
-        driver.implicitly_wait(10)
         driver.find_element(By.CSS_SELECTOR, 'a[href="/my_pets"]').click()
+        wait = WebDriverWait(driver, 5)
+        wait.until(EC.visibility_of_element_located((By.XPATH, '//div[@class=".col-sm-4 left"]/h2')))
         images = driver.find_elements(By.CSS_SELECTOR, 'img')
         count = 0
         for i in range(len(images)):
