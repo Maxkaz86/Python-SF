@@ -2,6 +2,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import os
 
+
 class BasePage:
     def __init__(self, driver):
         self.driver = driver
@@ -14,4 +15,5 @@ class BasePage:
         return WebDriverWait(self.driver, time).until(EC.presence_of_all_elements_located(locator))
 
     def go_to_site(self):
-        return self.driver.get(self.base_url)
+        site = self.driver.get(self.base_url)
+        return site

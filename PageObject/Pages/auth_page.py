@@ -1,6 +1,4 @@
 import time
-
-
 from .locators import AuthLocators
 from .base_page import BasePage
 import os

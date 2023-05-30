@@ -16,3 +16,4 @@ class BasePage(object):
         # возвращает относительный путь до текущей страницы (без домена)
         url = urlparse(self.driver.current_url)
         return url.path
+
